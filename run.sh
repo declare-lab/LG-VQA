@@ -1,0 +1,2 @@
+CUDA_VISIBLE_DEVICES=0 python train.py --name "openai/clip-vit-large-patch14" --kmode "recso" --epochs 10 --lr 1.25e-6 --dataset "aokvqa" --bs 4
+CUDA_VISIBLE_DEVICES=0 python train.py --name "blip2/pretrain" --kmode "cso" --epochs 10 --lr 1.25e-6 --dataset "vsr" --bs 4
