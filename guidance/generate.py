@@ -10,8 +10,7 @@ if __name__ == "__main__":
 
     parser = ArgumentParser()
     parser.add_argument("--device", type=int, default=0, help="CUDA device id.")
-    parser.add_argument("--file", type=str, default="", help="OpenAI deployment name.")
-    parser.add_argument("--samples", type=int, default=-1, help="Generate for how many samples.")
+    parser.add_argument("--file", type=str, default="", help="json lines file with 'image_path' key.")
     args = parser.parse_args()
     
     device = "cuda:{}".format(args.device)
@@ -19,8 +18,6 @@ if __name__ == "__main__":
     model = GuidanceModel(model_args)
 
     data = [json.loads(line) for line in open(args.file).readlines()]
-    if args.samples != -1:
-        data = data[:args.samples]
     
     new_data = copy.deepcopy(data)
     
